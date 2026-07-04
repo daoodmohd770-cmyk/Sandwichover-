@@ -1,4 +1,4 @@
-# Sandwichover-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
         }
         header h1 { margin: 0; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
         header p { margin: 0.5rem 0 0 0; opacity: 0.9; font-size: 1.2rem; }
-
+        
         .container {
             max-width: 1000px;
             margin: 2rem auto;
@@ -46,14 +46,14 @@
             background-color: var(--primary);
             margin: 0.5rem auto 0;
         }
-       
+        
         .menu-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
             margin-bottom: 4rem;
         }
-       
+        
         .menu-item {
             background: white;
             border-radius: 12px;
@@ -80,7 +80,7 @@
         }
         .item-details h3 { margin: 0 0 0.2rem 0; font-size: 1.1rem; }
         .item-desc { font-size: 0.85rem; color: var(--grey); margin: 0 0 1rem 0; }
-       
+        
         .item-footer {
             display: flex;
             justify-content: space-between;
@@ -88,7 +88,7 @@
             margin-top: auto;
         }
         .item-price { font-weight: bold; color: var(--primary); font-size: 1.2rem; }
-       
+        
         /* Plus Minus Quantity Selector Styles */
         .quantity-selector {
             display: flex;
@@ -137,7 +137,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
-       
+        
         .form-group { margin-bottom: 1.2rem; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
         .form-group input, .form-group textarea {
@@ -148,7 +148,7 @@
             box-sizing: border-box;
             font-family: inherit;
         }
-       
+        
         .submit-btn {
             background-color: #2ecc71;
             color: white;
@@ -174,7 +174,7 @@
 
     <div class="container">
         <h2 class="section-title">Explore Our Menu</h2>
-       
+        
         <div class="menu-section">
             <div class="menu-item">
                 <img class="item-img" src="https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=500&q=80" alt="Veg Sandwich">
@@ -193,7 +193,7 @@
                     </div>
                 </div>
             </div>
-           
+            
             <div class="menu-item">
                 <img class="item-img" src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?auto=format&fit=crop&w=500&q=80" alt="Non-Veg Sandwich">
                 <div class="item-content">
@@ -211,7 +211,7 @@
                     </div>
                 </div>
             </div>
-           
+            
             <div class="menu-item">
                 <img class="item-img" src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=500&q=80" alt="Chicken Samosa">
                 <div class="item-content">
@@ -229,7 +229,7 @@
                     </div>
                 </div>
             </div>
-           
+            
             <div class="menu-item">
                 <img class="item-img" src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80" alt="Biryani">
                 <div class="item-content">
@@ -281,32 +281,32 @@
 
         document.getElementById('checkoutForm').addEventListener('submit', function(e) {
             e.preventDefault();
-           
+            
             // IMPORTANT: Replace this placeholder with your actual WhatsApp phone number with country code (e.g., 919876543210)
-            const MY_PHONE_NUMBER = "917081398872";
-           
+            const MY_PHONE_NUMBER = "917081398872"; 
+            
             const veg = parseInt(document.getElementById('qty-veg').value) || 0;
             const nonveg = parseInt(document.getElementById('qty-nonveg').value) || 0;
             const samosa = parseInt(document.getElementById('qty-samosa').value) || 0;
             const biryani = parseInt(document.getElementById('qty-biryani').value) || 0;
-           
+            
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const address = document.getElementById('address').value;
-           
+            
             let orderItems = "";
             let total = 0;
-           
+            
             if(veg > 0) { orderItems += `• Veg Sandwich x ${veg} (₹${veg * 80})\n`; total += veg * 80; }
             if(nonveg > 0) { orderItems += `• Non-Veg Sandwich x ${nonveg} (₹${nonveg * 90})\n`; total += nonveg * 90; }
             if(samosa > 0) { orderItems += `• Chicken Samosa x ${samosa} (₹${samosa * 60})\n`; total += samosa * 60; }
             if(biryani > 0) { orderItems += `• Biryani x ${biryani} (₹${biryani * 130})\n`; total += biryani * 130; }
-           
+            
             if(total === 0) {
                 alert("Please select at least one item from the menu to place an order.");
                 return;
             }
-           
+            
             const message = `🥪 *NEW ORDER - SANDWICHOVER* 🥪\n\n` +
                             `*Customer Details:*\n` +
                             `Name: ${name}\n` +
@@ -314,9 +314,9 @@
                             `Address: ${address}\n\n` +
                             `*Order Summary:*\n${orderItems}\n` +
                             `*Total Bill Amount: ₹${total}*`;
-           
+            
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${MY_PHONE_NUMBER}&text=${encodeURIComponent(message)}`;
-           
+            
             window.open(whatsappUrl, '_blank');
         });
     </script>
